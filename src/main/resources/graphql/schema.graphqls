@@ -1,0 +1,36 @@
+schema {
+    query: Query,
+    mutation: Mutation
+}
+
+type Query {
+    getPost(id: Int): Post
+    getComment(id: Int) : Comment
+}
+
+type Mutation {
+    createPost(request: CreatePostRequest!): Post!
+    createComment(request: CreateCommentRequest!): Comment!
+}
+
+type Post {
+    id: Int!
+    title: String!
+    content: String!
+    comments: [Comment]
+}
+
+type Comment {
+    id: Int!
+    content: String!
+}
+
+input CreatePostRequest {
+    title: String!
+    content: String!
+}
+
+input CreateCommentRequest {
+    postId: Int!
+    content: String!
+}
